@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/all_font_awesome.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/Pages/Index.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/FontAwesome.js"></script>
+
+<h3>Students</h3>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddEditModal">
+    Add Student
+</button>
+<table class="table table-hover" id="TblHeader">
+    <thead>
+        <tr>
+            <th style="width:5%;">id</th>
+            <th style="width:10%;">Name</th>
+            <th style="width:10%;">Course</th>
+            <th style="width:10%;">Age</th>
+            <th style="width:10%;">Edit</th>
+            <th style="width:10%;">Delete</th>
+
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+<div class="modal fade" id="AddEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Operation </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group" style="display:none;">
+                        <input type="text" class="form-control" id="student_id">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="Student_Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Age</label>
+                        <input type="text" class="form-control" id="Student_Age">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Course</label>
+                        @Html.DropDownList("id", (IEnumerable<SelectListItem>)ViewBag.courses, null, new {@id="Course" ,@class = "form-control" })
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="display:none;" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+                <button id="Save" onclick="Save();" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
